@@ -37,6 +37,7 @@ RUN set -ex && \
 # Purge some unneeded cache
 RUN apk del libstdc++ curl
 RUN rm -rf /var/lib/apt/lists/*
+RUN apk add torsocks
 WORKDIR app
 COPY --from=builder /app/target/release/nostcat /usr/local/bin
 ENTRYPOINT ["/usr/local/bin/nostcat"]
